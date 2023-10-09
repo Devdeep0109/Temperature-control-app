@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [val , setVal] = useState(0);
+  function handleClick(e){
+    if(e.target.id === "btn1"){
+      setVal(val+1);
+    }
+    else if(e.target.id === "btn2"){
+      if(val > 0){
+        setVal(val - 1);  
+      }
+    }
+    
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <div className='inner'>
+        <div className='value'>{val} <span>&#8451;</span></div>
+        <button id ="btn1" onClick={handleClick}>Increment</button>
+        <button id ="btn2" onClick={handleClick}>Decrement</button>
+      </div>
     </div>
   );
 }
